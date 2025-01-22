@@ -4,7 +4,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const NavBar = () => {
-    const {logOutUser} = useContext(AuthContext)
+    const {user, logOutUser} = useContext(AuthContext)
 
     const handleSignOut = () =>{
         
@@ -59,7 +59,13 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a onClick={handleSignOut} className="btn">Sign out</a>
+                {
+                    user ? <>
+                    <span className="text-red">{user.email}</span>
+                    <a onClick={handleSignOut} className="btn btn-sm">Sign out</a>
+                    </> : <Link to='/login'>Log in</Link>
+                }
+                
             </div>
         </div>
     );
