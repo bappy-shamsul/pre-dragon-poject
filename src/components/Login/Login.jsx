@@ -5,10 +5,8 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Login = () => {
+    const {signInUser} = useContext(AuthContext)
     const handleSignIn = e => {
-        
-        const {signInUser} = useContext(AuthContext)
-
         e.preventDefault();
 
         const email = e.target.email.value;
